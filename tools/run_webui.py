@@ -46,12 +46,13 @@ if __name__ == "__main__":
     args.precision = torch.half if args.half else torch.bfloat16
 
     # Check if MPS or CUDA is available
-    if torch.backends.mps.is_available():
-        args.device = "mps"
-        logger.info("mps is available, running on mps.")
-    elif not torch.cuda.is_available():
-        logger.info("CUDA is not available, running on CPU.")
-        args.device = "cpu"
+    if args.device == "cuda":  # Only auto-detect if default 'cuda' is still set
+        if torch.backends.mps.is_available():
+            args.device = "mps"
+            logger.info("mps is available, running on mps.")
+        elif not torch.cuda.is_available():
+            logger.info("CUDA is not available, running on CPU.")
+            args.device = "cpu"
 
     logger.info("Loading Llama model...")
     llama_queue = launch_thread_safe_queue(
@@ -101,4 +102,4 @@ if __name__ == "__main__":
     inference_fct = get_inference_wrapper(inference_engine)
 
     app = build_app(inference_fct, args.theme)
-    app.launch(show_api=True)
+    app.launch(debug=True)

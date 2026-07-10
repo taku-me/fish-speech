@@ -32,11 +32,7 @@ class ReferenceLoader:
         self.encode_reference: Callable
 
         # Define the torchaudio backend
-        backends = torchaudio.list_audio_backends()
-        if "ffmpeg" in backends:
-            self.backend = "ffmpeg"
-        else:
-            self.backend = "soundfile"
+        self.backend = None
 
     def load_by_id(
         self,
@@ -115,7 +111,15 @@ class ReferenceLoader:
             audio_data = reference_audio
             reference_audio = io.BytesIO(audio_data)
 
-        waveform, original_sr = torchaudio.load(reference_audio, backend=self.backend)
+        try:
+            waveform, original_sr = torchaudio.load(reference_audio, backend="soundfile")
+        except Exception as e:
+            logger.error(f"Soundfile backend failed: {e}. Trying ffmpeg...")
+            try:
+                waveform, original_sr = torchaudio.load(reference_audio, backend="ffmpeg")
+            except Exception as e2:
+                logger.error(f"FFmpeg backend also failed: {e2}")
+                raise e2
 
         if waveform.shape[0] > 1:
             waveform = torch.mean(waveform, dim=0, keepdim=True)

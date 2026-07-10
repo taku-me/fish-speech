@@ -14,6 +14,8 @@ class VQManager:
         self.load_audio: Callable
 
     def decode_vq_tokens(self, codes):
+        # Move codes to the decoder device (LLM may run on a different device, e.g. MPS)
+        codes = codes.to(self.decoder_model.device)
         feature_lengths = torch.tensor(
             [codes.shape[1]], device=self.decoder_model.device
         )

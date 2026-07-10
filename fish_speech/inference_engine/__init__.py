@@ -27,6 +27,7 @@ class TTSInferenceEngine(ReferenceLoader, VQManager):
         decoder_model: FireflyArchitecture,
         precision: torch.dtype,
         compile: bool,
+        llm_device: str | torch.device | None = None,
     ) -> None:
 
         super().__init__()
@@ -35,6 +36,8 @@ class TTSInferenceEngine(ReferenceLoader, VQManager):
         self.decoder_model = decoder_model
         self.precision = precision
         self.compile = compile
+        # LLM may run on a different device (e.g. MPS) than the decoder (CPU).
+        self.llm_device = llm_device if llm_device is not None else decoder_model.device
 
     @torch.inference_mode()
     def inference(self, req: ServeTTSRequest) -> Generator[InferenceResult, None, None]:
@@ -147,7 +150,7 @@ class TTSInferenceEngine(ReferenceLoader, VQManager):
 
         # Prepare the request
         request = dict(
-            device=self.decoder_model.device,
+            device=self.llm_device,
             max_new_tokens=req.max_new_tokens,
             text=req.text,
             top_p=req.top_p,
