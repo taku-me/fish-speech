@@ -11,7 +11,7 @@ services:
       COMPILE: ${COMPILE:-0}
     profiles: ["webui"]
     ports:
-      - "${GRADIO_PORT:-7860}:7860"
+      - "${BIND_ADDR:-127.0.0.1}:${GRADIO_PORT:-7860}:7860"
 
   server:
     extends:
@@ -23,4 +23,4 @@ services:
       COMPILE: ${COMPILE:-0}
     profiles: ["server"]
     ports:
-      - "${API_PORT:-8080}:8080"
+      - "${BIND_ADDR:-127.0.0.1}:${API_PORT:-8080}:8080"
