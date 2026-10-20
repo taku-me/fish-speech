@@ -2,6 +2,7 @@ import os
 from argparse import ArgumentParser
 from pathlib import Path
 
+import gradio as gr
 import pyrootutils
 import torch
 from loguru import logger
@@ -104,4 +105,4 @@ if __name__ == "__main__":
     inference_fct = get_inference_wrapper(inference_engine)
 
     app = build_app(inference_fct, args.theme)
-    app.launch()
+    app.launch(theme=gr.themes.Base())

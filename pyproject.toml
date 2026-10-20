@@ -88,6 +88,7 @@ constraint-dependencies = [
     "gitpython>=3.1.60",
     "idna>=3.15",
     "msgpack>=1.2.1",
+    "numpy>=2.0",  # pyarrow>=23 needs NumPy 2 at runtime (not declared in its metadata)
     "orjson>=3.11.6",
     "pillow>=12.3.0",
     "pyarrow>=23.0.1",
