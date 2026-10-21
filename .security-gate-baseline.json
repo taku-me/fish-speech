@@ -1,0 +1,169 @@
+{
+ "created": "2026-10-21",
+ "note": "既存の違反の指紋。段 2 で減らす。増やす変更はユーザーの承認が要る(docs/security-gate-design.md §3.6)",
+ "count": 27,
+ "findings": [
+  {
+   "rule": "bind.all-interfaces",
+   "path": "docker/Dockerfile",
+   "fp": "6dca352aa88b685ee435fef6",
+   "hint": "0.0.0.0 で待つ。127.0.0.1(tailnet なら tailscale の IP)に絞る"
+  },
+  {
+   "rule": "bind.all-interfaces",
+   "path": "docker/Dockerfile",
+   "fp": "c0a8cb296a3a9b76dd42f90a",
+   "hint": "0.0.0.0 で待つ。127.0.0.1(tailnet なら tailscale の IP)に絞る"
+  },
+  {
+   "rule": "bind.all-interfaces",
+   "path": "docker/Dockerfile.rocm",
+   "fp": "21be0fe422568b4acee7a0a1",
+   "hint": "0.0.0.0 で待つ。127.0.0.1(tailnet なら tailscale の IP)に絞る"
+  },
+  {
+   "rule": "bind.all-interfaces",
+   "path": "docker/Dockerfile.rocm",
+   "fp": "8eab3453a875f68254bee124",
+   "hint": "0.0.0.0 で待つ。127.0.0.1(tailnet なら tailscale の IP)に絞る"
+  },
+  {
+   "rule": "bind.all-interfaces",
+   "path": "docker/Dockerfile.rocm",
+   "fp": "adb3c2f582b5ec8b8b8dd402",
+   "hint": "0.0.0.0 で待つ。127.0.0.1(tailnet なら tailscale の IP)に絞る"
+  },
+  {
+   "rule": "deps.vulnerable",
+   "path": "uv.lock",
+   "fp": "5cef7c121e0bd6fa401407c4",
+   "hint": "certifi 2025.8.3: PYSEC-2026-4320(直す版 2026.10.19)"
+  },
+  {
+   "rule": "lint.actionlint.runner-label",
+   "path": ".github/workflows/build-docker-image.yml",
+   "fp": "c8587cf73ab83c6932c06f72",
+   "hint": "label \"ubuntu-latest-16c64g\" is unknown. available labels are \"windows-latest\", "
+  },
+  {
+   "rule": "lint.actionlint.shellcheck",
+   "path": ".github/workflows/build-docker-image.yml",
+   "fp": "11d4b56e7b062ff5b5798390",
+   "hint": "shellcheck reported issue in this script: SC2086:info:2:22: Double quote to prev"
+  },
+  {
+   "rule": "lint.actionlint.shellcheck",
+   "path": ".github/workflows/docs.yml",
+   "fp": "54331d57103962040faae05e",
+   "hint": "shellcheck reported issue in this script: SC2086:info:1:40: Double quote to prev"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "164ba0b9ef43c2c818accc72",
+   "hint": "Possible hardcoded password assigned to: \"EOS_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "1c5e454daf7a37046e8e852b",
+   "hint": "Possible hardcoded password assigned to: \"AUDIO_END_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "476413c63ff910c66023a3ee",
+   "hint": "Possible hardcoded password assigned to: \"MODALITY_VOICE_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "4b6d0e15e72a206da048344d",
+   "hint": "Possible hardcoded password assigned to: \"PHONEME_END_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "54150dbb452330927953869d",
+   "hint": "Possible hardcoded password assigned to: \"MODALITY_INTERLEAVE_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "6f39f6b418bdd8124e2264c3",
+   "hint": "Possible hardcoded password assigned to: \"PHONEME_START_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "8d55dff7e6b4d59172a3ec14",
+   "hint": "Possible hardcoded password assigned to: \"PAD_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "a63099f11beb24536e520448",
+   "hint": "Possible hardcoded password assigned to: \"AUDIO_START_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "ca95c3868d420fb50b49e791",
+   "hint": "Possible hardcoded password assigned to: \"AUDIO_EMBED_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "d7a42fe0fef9e91df9f3f875",
+   "hint": "Possible hardcoded password assigned to: \"IM_END_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "dac0f3397419d0c01bfd735c",
+   "hint": "Possible hardcoded password assigned to: \"IM_START_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "dd17aadd4a8eaf5bb46794c0",
+   "hint": "Possible hardcoded password assigned to: \"MODALITY_TEXT_TOKEN\"(ruff S105)"
+  },
+  {
+   "rule": "lint.ruff.S105",
+   "path": "fish_speech/tokenizer.py",
+   "fp": "f10ad12b2cad3797007754b0",
+   "hint": "Possible hardcoded password assigned to: \"SEMANTIC_TOKEN_TEMPLATE\"(ruff S105)"
+  },
+  {
+   "rule": "secret.timing-compare",
+   "path": "fish_speech/models/text2semantic/inference.py",
+   "fp": "f3b5a8a3a65d47dc53f76436",
+   "hint": "cur_token / im_end_id を == で比べている。hmac.compare_digest を使う"
+  },
+  {
+   "rule": "secret.timing-compare",
+   "path": "tools/api_server.py",
+   "fp": "f775ffde02ed0fd635ffe189",
+   "hint": "token / api_key を == で比べている。hmac.compare_digest を使う"
+  },
+  {
+   "rule": "web.no-host-check",
+   "path": "tools/webui/__init__.py",
+   "fp": "b99187635764fafa580c19c3",
+   "hint": "HTTP の app があるのに Host の確かめが無い(DNS rebinding)。許す Host を列挙する"
+  },
+  {
+   "rule": "web.no-origin-check",
+   "path": "tools/webui/__init__.py",
+   "fp": "67ace1a24bd67de0a1a33fd8",
+   "hint": "HTTP の app があるのに Origin / Sec-Fetch-Site の確かめが無い(CSRF)。状態を変える経路で Sec-Fetch-Site "
+  },
+  {
+   "rule": "xss.sink",
+   "path": "tools/server/views.py",
+   "fp": "e7164aa0c7f2334b44077700",
+   "hint": "HTMLResponse に動的な文字列。html.escape を通すかテンプレートにする"
+  }
+ ]
+}
